@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Kumar Lohana | Marketing & Communications</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6cf7;
+            --secondary-color: #6f42c1;
+            --accent-color: #ff6b6b;
+            --dark-color: #1d2144;
+            --light-color: #3792b996;
+            --text-color: #505050;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section-padding {
+            padding: 70px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .section-header h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        /* Enhanced Preloader with Wave Animation */
+        .loader_bg {
+            position: fixed;
+            z-index: 9999999;
+            background: white;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .wave-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        
+        .wave {
+            width: 10px;
+            height: 50px;
+            background: var(--primary-color);
+            margin: 0 5px;
+            border-radius: 20px;
+            animation: wave 1.2s infinite ease-in-out;
+        }
+        
+        .wave:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .wave:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        
+        .wave:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+        
+        .wave:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes wave {
+            0%, 40%, 100% {
+                transform: scaleY(0.6);
+            }
+            20% {
+                transform: scaleY(1.2);
+            }
+        }
+        
+        .loader-text {
+            font-size: 18px;
+            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        /* Navigation */
+        .nav-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+            list-style: none;
+        }
+        
+        .nav-links li a {
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links li a:hover::after,
+        .nav-links li.active a::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Banner Area */
+        .banner-area {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .banner-content h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .animated-headline {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+        
+        .ah-words-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .ah-words-wrapper b {
+            display: inline-block;
+            position: absolute;
+            white-space: nowrap;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+        
+        .ah-words-wrapper b.is-visible {
+            position: relative;
+            opacity: 1;
+            animation: fadeIn 1s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* About Area */
+        .about-area {
+            background: white;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+        
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .about-text h3 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
+        }
+        
+        .profile-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .profile-image img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skills-container {
+            flex: 100%;
+            margin-top: 40px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-item i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .skill-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        /* Numbers Area */
+        .number-area {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+        }
+        
+        .number-area h2, .number-area p {
+            color: white;
+        }
+        
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .number-item {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .number-item i {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .number-item h2 {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+        
+        /* Portfolio Area */
+        .portfolio-area {
+            background: #f8f9fa;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-content {
+            padding: 20px;
+        }
+        
+        .portfolio-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        /* Petal Touch Section */
+        .petal-touch-area {
+            background: white;
+        }
+        
+        .petal-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .petal-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .petal-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .petal-text {
+            flex: 1;
+            min-width: 300px;
+            padding-left: 30px;
+        }
+        
+        .petal-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .petal-text p {
+            margin-bottom: 20px;
+        }
+        
+        /* Contact Area */
+        .contact-area {
+            background: white;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .contact-item {
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-item i {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .contact-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* Footer Area */
+        .footer-area {
+            background: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-area a {
+            color: var(--primary-color);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            .nav-links {
+                flex-direction: column;
+                background: white;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .about-text, .profile-image {
+                padding: 0;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            
+            .petal-text {
+                padding-left: 0;
+                margin-top: 30px;
+            }
+            
+            .animated-headline {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .section-padding {
+                padding: 50px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 28px;
+            }
+            
+            .animated-headline {
+                font-size: 28px;
+            }
+            
+            .profile-image img {
+                width: 220px;
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader with Wave Animation -->
+    <div class="loader_bg">
+        <div class="wave-container">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <div class="loader-text">Harsh Kumar...</div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="nav-area">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Harsh</a>
+                <ul class="nav-links">
+                    <li class="active"><a class="smooth-scroll" href="#home">Home</a></li>
+                    <li><a class="smooth-scroll" href="#about">About</a></li>
+                    <li><a class="smooth-scroll" href="#portfolio">Portfolio</a></li>
+                    <li><a class="smooth-scroll" href="#petal-touch">Petal Touch</a></li>
+                    <li><a class="smooth-scroll" href="#contact">Contact</a></li>
+                </ul>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner Area -->
+    <section class="banner-area" id="home">
+        <div class="container">
+            <div class="banner-content">
+                <h3>WELCOME TO MY PORTFOLIO</h3>
+                <h1 class="animated-headline">
+                    <span class="ah-words-wrapper">
+                        <b class="is-visible">Harsh Kumar Lohana</b>
+                        <b>Marketing Specialist</b>
+                        <b>Founder of Petal Touch</b>
+                    </span>
+                </h1>
+                <a href="#contact" class="btn">Contact me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Area -->
+    <section class="about-area section-padding" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Harsh Kumar Lohana</h2>
+                    <h3>Marketing & Communications Specialist</h3>
+                    <p>
+                        I am a passionate marketing professional with expertise in brand strategy, digital marketing, and communication. 
+                        As the founder of Petal Touch, I have successfully created and implemented marketing campaigns that drive growth 
+                        and engagement.
+                    </p>
+                    <p>
+                        With extensive experience in both traditional and digital marketing channels, I specialize in creating integrated 
+                        marketing solutions that deliver measurable results.
+                    </p>
+                    <a href="#" class="btn">Download Resume &nbsp; &nbsp;<i class="fa fa-download"></i></a>
+                </div>
+                <div class="profile-image">
+                    <img src="harsh.png.jpg" alt="Harsh Kumar Lohana">
+                </div>
+                <div class="skills-container">
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fas fa-comments"></i>
+                            <h3>Communication Skills</h3>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-users"></i>
+                            <h3>Leadership Skills</h3>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h3>Presentation Skills</h3>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-brain"></i>
+                            <h3>Critical Thinking</h3>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-chart-line"></i>
+                        
+                            <h3>Entrepreneurship</h3>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-microphone"></i>
+                            <h3>Stage Fear Management</h3>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>Career Counselling</h3>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-gavel"></i>
+                            <h3>Debating</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Numbers Area -->
+    <section class="number-area section-padding">
+        <div class="container">
+            <div class="numbers-grid">
+                <div class="number-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h2 class="counter">43+</h2>
+                    <p>Lectures & Workshops</p>
+                </div>
+                <div class="number-item">
+                    <i class="fas fa-handshake"></i>
+                    <h2 class="counter">26+</h2>
+                    <p>Client Meetings</p>
+                </div>
+                <div class="number-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <h2 class="counter">3+</h2>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="number-item">
+                    <i class="fas fa-award"></i>
+                    <h2 class="counter">15+</h2>
+                    <p>Awards Received</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Area -->
+    <section class="portfolio-area section-padding" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Portfolio</h2>
+                <p>Some of my recent projects and achievements</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <img src="youth.png.jpg" alt="Marketing Campaign">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Digital Marketing Campaign</h3>
+                        <p>Increased client engagement by 150%</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <img src="petal.png.jpg" alt="Brand Strategy">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Brand Strategy</h3>
+                        <p>Developed comprehensive brand positioning</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <img src="digital.png.jpg" alt="Social Media Management">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Social Media Management</h3>
+                        <p>Grew social media presence by 200%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Petal Touch Section -->
+    <section class="petal-touch-area section-padding" id="petal-touch">
+        <div class="container">
+            <div class="section-header">
+                <h2>Petal Touch</h2>
+                <p>My venture in the floral industry</p>
+            </div>
+            <div class="petal-content">
+                <div class="petal-image">
+                    <img src="prodcuts.png" alt="Petal Touch">
+                </div>
+                <div class="petal-text">
+                    <h3>About Petal Touch</h3>
+                    <p>Petal Touch is an innovative floral venture that reimagines how people experience and interact with flowers. We combine artistic floral arrangements with strategic digital presence to create memorable experiences for our clients.</p>
+                    <p>As the founder, I've leveraged my marketing expertise to position Petal Touch as a premium brand in the floral industry.</p>
+                    <a href="https://harshpetallohana.github.io/Petal-Touch/" target="_blank" class="btn">Visit Website</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Area -->
+    <section class="contact-area section-padding" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact</h2>
+                <p>Get in touch with me for collaborations or inquiries</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fa fa-home"></i>
+                    <h3>Location</h3>
+                    <p>Mirpurkhas, Sindh , Pakistan</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fa fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+92 332 1367681</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>hk03020300@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-gg"></i>
+                    <h3>Social Media</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/harshkumar_lohana"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/harsh.lohana.859636"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Area -->
+    <footer class="footer-area">
+        <div class="container">
+            <p>&copy; All Rights Reserved By <a href="https://www.instagram.com/harshkumar_lohana">Harsh Kumar Lohana</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Preloader
+        $(window).on('load', function() {
+            $('.loader_bg').fadeOut('slow');
+        });
+
+        // Mobile menu toggle
+        $('.menu-toggle').on('click', function() {
+            $('.nav-links').toggleClass('active');
+        });
+
+        // Smooth scrolling
+        $('.smooth-scroll').on('click', function(e) {
+            e.preventDefault();
+            var target = $(this).attr('href');
+            $('html, body').animate({
+                scrollTop: $(target).offset().top
+            }, 800);
+        });
+
+        // Text rotation animation
+        function animateHeadline() {
+            var words = document.querySelectorAll('.ah-words-wrapper b');
+            var current = 0;
+            
+            function showWord() {
+                words.forEach(function(word) {
+                    word.classList.remove('is-visible');
+                });
+                words[current].classList.add('is-visible');
+                current = (current + 1) % words.length;
+            }
+            
+            setInterval(showWord, 2000);
+        }
+        
+        // Initialize animations when document is ready
+        $(document).ready(function() {
+            animateHeadline();
+            
+            // Close mobile menu when clicking on a link
+            $('.nav-links li a').on('click', function() {
+                $('.nav-links').removeClass('active');
+            });
+        });
+    </script>
+</body>
+</html>
